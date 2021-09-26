@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: juhovan/piped-frontend
+  PIPED_API: https://piped.24-7.fi/api/
 
 jobs:
   build-docker-hotspot:
@@ -33,6 +34,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
+          build-args: PIPED_API="${{ env.PIPED_API }}"
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
