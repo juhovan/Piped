@@ -10,7 +10,7 @@ RUN yarn install --prefer-offline
 
 COPY . .
 
-RUN sed -i 's@https://pipedapi.kavin.rocks@'"$PIPED_API"'@' src/main.js src/components/Preferences.vue && \
+RUN sed -i 's@https://pipedapi.kavin.rocks@'$PIPED_API'@' src/main.js src/components/Preferences.vue && \
     yarn build
 
 FROM nginx:alpine
